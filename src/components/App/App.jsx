@@ -21,11 +21,12 @@ export default function App() {
   return (
     <div>
       <h1>Phonebook</h1>
-      {isLoading && <Loader>Loading...</Loader>}
-      {isError && <Error>Error...</Error>}
+      {isLoading && <Loader>Loading... Please wait!</Loader>}
+      {isError ? <Error>Sorry! Something went wrong. Please try again...</Error> : <>
       <ContactForm />
       <SearchBox />
-      <ContactList />
+      <ContactList /></>}
+      
     </div>
   );
 }

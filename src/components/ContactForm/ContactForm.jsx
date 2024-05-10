@@ -15,7 +15,7 @@ const regex = {
 // Об'єкт Yup валідації полів форми
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
-  phone: Yup.string()
+  number: Yup.string()
     .min(3, "Too Short!")
     .max(50, "Too Long!")
     .matches(regex.phoneNumber, "Number format: 000-00-00")
@@ -26,7 +26,7 @@ export default function ContactForm() {
   const dispatch = useDispatch();
 
   const nameFieldId = useId(); // Створення ідентифікаторів
-  const phoneFieldId = useId(); // полів форми
+  const numberFieldId = useId(); // полів форми
 
 
   const handleSubmit = (values, actions) => {
@@ -38,7 +38,7 @@ export default function ContactForm() {
     <>
       <Formik initialValues={
     {name: "",
-    phone: "",}
+    number: "",}
   }
       onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
         <Form className={css.container}>
@@ -48,8 +48,8 @@ export default function ContactForm() {
             <ErrorMessage className={css.error} name="name" component="span" />
           </div>
           <div className={css.inputContainer}>
-            <label htmlFor={phoneFieldId}>Number</label>
-            <Field className={css.inputValue} type="tel" name="phone" />
+            <label htmlFor={numberFieldId}>Number</label>
+            <Field className={css.inputValue} type="tel" name="number" />
             <ErrorMessage className={css.error} name="phone" component="span" />
           </div>
           <button className={css.btnAdd} type="submit">

@@ -7,7 +7,7 @@ import { deleteContact } from "../../redux/contactsOps";
 
 import css from "./Contact.module.css";
 
-export default function Contact({ contacts: { id, name, number } }) {
+export default function Contact({ filteredContacts: { id, name, number } }) {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(id));
   return (
